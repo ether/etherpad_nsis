@@ -3,7 +3,7 @@
 
 ;--------------------------------
 ;Styling
-!define MUI_ICON "C:\etherpad-lite-new\src\static\img\brand.ico"
+!define MUI_ICON "brand.ico"
 BrandingText "Etherpad Foundation"
 Name "Etherpad Server"
 OutFile "etherpad-server-windows.exe"
