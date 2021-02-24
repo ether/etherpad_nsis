@@ -4,6 +4,7 @@
 ;--------------------------------
 ;Styling
 !define MUI_ICON "brand.ico"
+Icon "brand.ico"
 BrandingText "Etherpad Foundation"
 Name "Etherpad Server"
 OutFile "etherpad-server-windows.exe"
@@ -14,7 +15,7 @@ Page directory
 Page instfiles
 
 ; The default installation directory
-InstallDir "$PROGRAMFILES\Etherpad Foundation\Etherpad Server"
+InstallDir "$LocalAppData\Programs\Etherpad Foundation\Etherpad Server"
 
 Section
   SectionIn RO
@@ -29,14 +30,12 @@ SectionEnd
 
 Section
   CreateDirectory "$SMPROGRAMS\Etherpad Foundation"
-  CreateShortCut "$SMPROGRAMS\Etherpad Foundation\Etherpad Server.lnk" "$INSTDIR\start.bat" \
-  "some command line parameters" "$INSTDIR\start.bat" 2 SW_SHOWNORMAL \
-  ALT|CONTROL|SHIFT|F5 "Etherpad Server"
-  CreateShortCut "$SMPROGRAMS\Etherpad Foundation\Etherpad.lnk" "http://127.0.0.1:9001" \
-  "some command line parameters" "http://127.0.0.1:9001" 2 SW_SHOWNORMAL \
-  ALT|CONTROL|SHIFT|F5 "Etherpad"
+  CreateShortCut "$SMPROGRAMS\Etherpad Foundation\Etherpad Server.lnk" "$INSTDIR\start.bat" "brand.ico" "Etherpad Server"
+  CreateShortCut "$SMPROGRAMS\Etherpad Foundation\Etherpad.lnk" "http://127.0.0.1:9001" "brand.ico" "Etherpad"
 
-  WriteRegStr HKEY_LOCAL_MACHINE "Software\Microsoft\Windows\CurrentVersion\Run" \
-"Etherpad" "C:\etherpad-lite-new\start.bat"
-  MessageBox MB_OK "Starting Etherpad"
+;  WriteRegStr HKEY_LOCAL_MACHINE "Software\Microsoft\Windows\CurrentVersion\Run" \
+;"Etherpad" "C:\etherpad-lite-new\start.bat"
+;  ExecWait '"$INSTDIR\BatchFile.cmd" "$INSTDIR" "$DATA_FOLDER"'
+
+  Exec '$INSTDIR\start.bat'
 SectionEnd
