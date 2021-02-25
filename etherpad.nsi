@@ -24,7 +24,7 @@ Section
   SetOutPath $INSTDIR
 
   ; Put files there
-  File /r "..\etherpad-lite-new"
+  File /r "..\etherpad-lite-new\etherpad-lite-new"
 
 SectionEnd
 
